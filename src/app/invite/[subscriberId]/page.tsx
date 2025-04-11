@@ -5,8 +5,15 @@ import { Stats } from './_components/stats'
 
 import logo from '@/assets/Logo.svg'
 
-export default function InvitePage() {
-  const inviteLink = 'http://localhost:3000/invite/4873473753202437u'
+interface InvitePageProps {
+  params: Promise<{
+    subscriberId: string
+  }>
+}
+
+export default async function InvitePage({ params }: InvitePageProps) {
+  const { subscriberId } = await params
+  const inviteLink = `http://localhost:3333/invites/${subscriberId}`
 
   return (
     <div className="min-h-dvh flex items-center justify-between gap-16 flex-col md:flex-row">
